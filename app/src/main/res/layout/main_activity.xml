@@ -1,8 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:padding="@dimen/parent_padding"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_views"
+        android:text="@string/amount_text"
+        style="@style/Base.TextAppearance.AppCompat.Body1" />
+
+    <EditText
+        android:id="@+id/txtAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType ="numberDecimal"
+        android:gravity="end"
+        android:digits="1234567890."
+        style="@style/Base.TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_views"
+        android:text="@string/currency_from_text"
+        style="@style/Base.TextAppearance.AppCompat.Body1" />
+
+    <RadioGroup
+        android:id="@+id/rdgFirstCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_radiorutton"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdbF01"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/dollar_text" />
+
+        <RadioButton
+            android:id="@+id/rdbF02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/euro_text" />
+
+        <RadioButton
+            android:id="@+id/rdbF03"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/pound_text" />
+
+        <ImageView
+            android:id="@+id/imgFCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:scaleType="fitEnd" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_views"
+        android:text="@string/currency_to_text"
+        style="@style/Base.TextAppearance.AppCompat.Body1" />
+
+    <RadioGroup
+        android:id="@+id/rdgSecondCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_radiorutton"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdbS01"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/dollar_text" />
+
+        <RadioButton
+            android:id="@+id/rdbS02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/euro_text" />
+
+        <RadioButton
+            android:id="@+id/rdbS03"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_radiobutton"
+            android:text="@string/pound_text" />
+
+        <ImageView
+            android:id="@+id/imgSCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:scaleType="fitEnd" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/clickButton"
+        style="@style/Base.TextAppearance.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/button_text"
+        android:layout_marginTop="@dimen/margin_views"
+        android:textColor="@color/white" />
+
 
 </LinearLayout>
