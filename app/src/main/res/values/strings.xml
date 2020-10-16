@@ -7,5 +7,5 @@
     <string name="euro_text">Euro</string>
     <string name="pound_text">Pound</string>
     <string name="button_text">EXCHANGE</string>
-    <string name="result_currency">%1$f%2$s = %3$f%4$s</string>
+    <string name="result_currency">%.2f%s = %.2f%s</string>
 </resources>

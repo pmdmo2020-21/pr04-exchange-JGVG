@@ -22,13 +22,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart(){
         super.onStart()
-        // val text = b.txtAmount.text.toString()
 
         txtAmountWatcher = object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //...
+                if(s!!.isEmpty()){
+                    setupTxtAmount()
+                }
             }
         }
         b.txtAmount.addTextChangedListener(txtAmountWatcher)
@@ -103,55 +104,50 @@ class MainActivity : AppCompatActivity() {
         val rb_text_value_currency_to = findViewById<RadioButton>(b.rdgSecondCurrency.checkedRadioButtonId).getText().toString()
         val amount = b.txtAmount.text.toString().toDouble()
 
-        val currency_from: Currency
-        val currency_to: Currency
-        val result: Double
+        lateinit var currency_from: Currency
+        lateinit var currency_to: Currency
+        var result = 0.0
 
         when (rb_text_value_currency_from) {
-            "Dollar" -> {
-                when (rb_text_value_currency_to){
+            "Dollar" -> when (rb_text_value_currency_to){
                     "Euro" ->{
                         currency_from = DOLLAR
                         currency_to = EURO
-                        //code -> result = ???
+                        result = EURO.fromDollar(amount)
                     }
                     "Pound" ->{
                         currency_from = DOLLAR
                         currency_to = POUND
-                        //code -> result = ???
+                        result = POUND.fromDollar(amount)
                     }
-                }
             }
-            "Euro" -> {
-                when (rb_text_value_currency_to){
+            "Euro" -> when (rb_text_value_currency_to){
                     "Dollar" ->{
                         currency_from = EURO
                         currency_to = DOLLAR
-                        //code -> result = ???
+                        result = EURO.toDollar(amount)
                     }
                     "Pound" ->{
                         currency_from = EURO
                         currency_to = POUND
-                        //code -> result = ???
+                        result = EURO.toDollar(amount)
+                        result = POUND.fromDollar(result)
                     }
-                }
             }
-            "Pound" -> {
-                when (rb_text_value_currency_to){
-                    "Dollar" ->{
-                        currency_from = POUND
-                        currency_to = DOLLAR
-                        //code -> result = ???
-                    }
-                    "Euro" ->{
-                        currency_from = POUND
-                        currency_to = EURO
-                        //code -> result = ???
-                    }
+            "Pound" -> when (rb_text_value_currency_to){
+                "Dollar" ->{
+                    currency_from = POUND
+                    currency_to = DOLLAR
+                    result = POUND.toDollar(amount)
+                }
+                "Euro" ->{
+                    currency_from = POUND
+                    currency_to = EURO
+                    result = POUND.toDollar(amount)
+                    result = EURO.fromDollar(result)
                 }
             }
         }
-
         showResult(amount, result, currency_from, currency_to)
     }
 
